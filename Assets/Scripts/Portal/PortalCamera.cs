@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Camera))]
 public class PortalCamera : MonoBehaviour
 {
     public Transform portal, otherPortal;
-    private Transform playerCamera;
+    private Transform playerCameraTransform;
 
     [Space]
+    public Camera portalCamera;
     public Material cameraMat;
-    private Camera portalCamera;
 
     private void Start()
     {
-        playerCamera = Camera.main.transform;
-        portalCamera = GetComponent<Camera>();
+        playerCameraTransform = Camera.main.transform;
 
         if (portalCamera.targetTexture != null)
         {
@@ -25,12 +23,12 @@ public class PortalCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 playerOffset = playerCamera.position - otherPortal.position;
-        transform.position = portal.position + playerOffset;
+        Vector3 playerOffset = playerCameraTransform.position - otherPortal.position;
+        portalCamera.transform.position = portal.position + playerOffset;
 
         float portalRotation = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-        Vector3 cameraDirection = Quaternion.AngleAxis(portalRotation, Vector3.up) * playerCamera.forward;
-        transform.rotation = Quaternion.LookRotation(cameraDirection, Vector3.up);
+        Vector3 cameraDirection = Quaternion.AngleAxis(portalRotation, Vector3.up) * playerCameraTransform.forward;
+        portalCamera.transform.rotation = Quaternion.LookRotation(cameraDirection, Vector3.up);
     }
 }
 
