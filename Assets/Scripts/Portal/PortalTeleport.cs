@@ -10,6 +10,8 @@ public class PortalTeleport : MonoBehaviour
 
     private byte orderNumber = 0;
 
+    public Camera targetPortalCamera;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -27,6 +29,7 @@ public class PortalTeleport : MonoBehaviour
                 && overlapOrder[0] < overlapOrder[1])
             {
                 TeleportPlayer();
+                PortalManager.SetActiveCamera(targetPortalCamera);
             }
         }
         else
