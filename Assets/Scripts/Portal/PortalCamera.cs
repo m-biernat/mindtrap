@@ -7,18 +7,10 @@ public class PortalCamera : MonoBehaviour
 
     [Space]
     public Camera portalCamera;
-    public Material cameraMat;
 
     private void Start()
     {
         playerCameraTransform = Camera.main.transform;
-
-        if (portalCamera.targetTexture != null)
-        {
-            portalCamera.targetTexture.Release();
-        }
-        portalCamera.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        cameraMat.mainTexture = portalCamera.targetTexture;
     }
 
     private void LateUpdate()
