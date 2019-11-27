@@ -3,9 +3,13 @@
 public class MazeGenerator : MonoBehaviour
 {
     public GameObject tilePrefab;
+    public GameObject wallPrefab;
     public float tileRadius;
+    
     public Transform mazeAnchor;
     public Transform endPointAnchor;
+    
+    public bool fillTileSpaces;
 
     [Space]
     public int width = 11;
@@ -29,19 +33,52 @@ public class MazeGenerator : MonoBehaviour
     {
         Maze maze = new Maze(width, height, initialX, initialY, seed);
 
+        Vector3 position;
+
         for (int i = 0; i < maze.rows; i++)
         {
             for (int j = 0; j < maze.cols; j++)
             {
+                position = new Vector3(positionOffset * j, 0f,
+                                       positionOffset * i);
+
                 if (maze.grid[i, j] == Maze.visited)
                 {
-                    Vector3 position = new Vector3(positionOffset * j, 0f,
+                    InstantiateTile(tilePrefab, position);
+
+                    if (fillTileSpaces)
+                    {
+                        if (j + 1 < maze.cols && maze.grid[i, j + 1] == Maze.visited)
+                        {
+                            position = new Vector3(positionOffset * j + 2 * tileRadius, 0f,
                                                    positionOffset * i);
 
-                    Instantiate(tilePrefab, position + mazeAnchor.position,
-                                tilePrefab.transform.rotation, transform);
+                            InstantiateTile(tilePrefab, position);
+                        }
+
+                        if (i + 1 < maze.rows && maze.grid[i + 1, j] == Maze.visited)
+                        {
+                            position = new Vector3(positionOffset * j, 0f,
+                                                   positionOffset * i + 2 * tileRadius);
+
+                            InstantiateTile(tilePrefab, position);
+                        }
+                    }
+                }
+                else if (maze.grid[i, j] == Maze.wall)
+                {
+                    InstantiateTile(wallPrefab, position);
                 }
             }
+        }
+    }
+
+    private void InstantiateTile(GameObject prefab, Vector3 position)
+    {
+        if (prefab != null)
+        {
+            Instantiate(prefab, position + mazeAnchor.position,
+            prefab.transform.rotation, transform);
         }
     }
 
