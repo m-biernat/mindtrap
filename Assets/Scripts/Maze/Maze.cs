@@ -15,7 +15,7 @@ public class Maze
 
     private Stack<int[]> availableNeighbors;
 
-    public Maze(int width = 11, int height = 7, int initialX = -1, int initialY = 1, int seed = 10)
+    public Maze(int width, int height, int initialX, int initialY, int seed)
     {
         this.width = width;
         this.height = height;
@@ -25,7 +25,7 @@ public class Maze
         Random.InitState(seed);
         availableNeighbors = new Stack<int[]>();
 
-        cols = (2 * width) - 1;
+        cols = (2 * width) + 1;
         rows = (2 * height) + 1;
 
         grid = new int[rows, cols];
@@ -70,7 +70,7 @@ public class Maze
         {
             for (int j = 0; j < cols; j++)
             {
-                if (i % 2 == 1 && j % 2 == 0)
+                if (i % 2 == 1 && j % 2 == 1)
                 {
                     grid[i, j] = empty;
                 }
@@ -86,12 +86,12 @@ public class Maze
     {
         if (initialX == -1)
         {
-            initialX = width - 1;
+            initialX = width;
         }
 
         if (initialY == -1)
         {
-            initialY = height - 1;
+            initialY = height;
         }
     }
 

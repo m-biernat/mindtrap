@@ -2,8 +2,10 @@
 
 public class MazeGenerator : MonoBehaviour
 {
-    public GameObject mazePrefab;
-    public Transform anchor;
+    public GameObject tilePrefab;
+    public float tileRadius;
+    public Transform mazeAnchor;
+    public Transform endPointAnchor;
 
     [Space]
     public int width = 11;
@@ -16,7 +18,14 @@ public class MazeGenerator : MonoBehaviour
     [Space]
     public int positionOffset = 3;
 
-    void Start()
+    private void Start()
+    {
+        SetAnchorOffset();
+
+        GenerateMaze();
+    }
+
+    private void GenerateMaze()
     {
         Maze maze = new Maze(width, height, initialX, initialY, seed);
 
@@ -26,13 +35,26 @@ public class MazeGenerator : MonoBehaviour
             {
                 if (maze.grid[i, j] == Maze.visited)
                 {
-                    Vector3 position = new Vector3(positionOffset * j, 0f, 
+                    Vector3 position = new Vector3(positionOffset * j, 0f,
                                                    positionOffset * i);
 
-                    Instantiate(mazePrefab, position + anchor.position, 
-                                mazePrefab.transform.rotation, transform);
+                    Instantiate(tilePrefab, position + mazeAnchor.position,
+                                tilePrefab.transform.rotation, transform);
                 }
             }
         }
+    }
+
+    private void SetAnchorOffset()
+    {
+        Vector3 anchorPos;
+
+        anchorPos = mazeAnchor.position;
+        anchorPos.x = -(2 * width * positionOffset) / 2;
+        mazeAnchor.position = anchorPos;
+
+        anchorPos = endPointAnchor.position;
+        anchorPos.z = (2 * height * positionOffset) + mazeAnchor.position.z + tileRadius;
+        endPointAnchor.position = anchorPos;
     }
 }
