@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private float xAxisMovement = 0f, zAxisMovement = 0f,
                   yAxisRotation = 0f, xAxisRotation = 0f;
 
-    private float camRotation = 0f;
+    [HideInInspector] public float camRotation = 0f;
 
     private void Start()
     {
