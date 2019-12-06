@@ -11,6 +11,7 @@ public class PortalTeleport : MonoBehaviour
     private byte orderNumber = 0;
 
     public Camera targetPortalCamera;
+    public bool flipRotation;
 
     private void Start()
     {
@@ -46,7 +47,9 @@ public class PortalTeleport : MonoBehaviour
         Vector3 portalToPlayer = player.position - origin.position;
 
         float rotation = -Quaternion.Angle(origin.rotation, destination.rotation);
-        rotation += 180;
+
+        if (flipRotation) rotation += 180;
+
         player.Rotate(Vector3.up, rotation);
 
         Vector3 positionOffset = Quaternion.Euler(0f, rotation, 0f) * portalToPlayer;

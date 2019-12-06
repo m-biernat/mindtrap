@@ -15,12 +15,15 @@ public class PortalCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 playerOffset = playerCameraTransform.position - otherPortal.position;
-        portalCamera.transform.position = portal.position + playerOffset;
+        if (portalCamera.enabled)
+        {
+            Vector3 playerOffset = playerCameraTransform.position - otherPortal.position;
+            portalCamera.transform.position = portal.position + playerOffset;
 
-        float portalRotation = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-        Vector3 cameraDirection = Quaternion.AngleAxis(portalRotation, Vector3.up) * playerCameraTransform.forward;
-        portalCamera.transform.rotation = Quaternion.LookRotation(cameraDirection, Vector3.up);
+            float portalRotation = Quaternion.Angle(portal.rotation, otherPortal.rotation);
+            Vector3 cameraDirection = Quaternion.AngleAxis(portalRotation, Vector3.up) * playerCameraTransform.forward;
+            portalCamera.transform.rotation = Quaternion.LookRotation(cameraDirection, Vector3.up);
+        }
     }
 }
 

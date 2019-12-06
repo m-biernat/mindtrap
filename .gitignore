@@ -13,7 +13,7 @@
 /[Aa]ssets/[Ii]mport/*
 
 # Never ignore Asset meta data
-!/[Aa]ssets/**/*.meta
+#!/[Aa]ssets/**/*.meta
 
 !/[Bb]uild/.gitkeep
 !/[Bb]uilds/.gitkeep

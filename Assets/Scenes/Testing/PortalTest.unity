@@ -1327,12 +1327,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983068343}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &1021735875 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2295250375561209107, guid: 5a7c8244cbef9464c8137c6774a5af2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2295250376285099728}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1075751509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,7 +2097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69de8a6d488f30344885a23f32ae3b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPortalCamera: {fileID: 1021735875}
+  initialPortalCamera: {fileID: 1997062441}
   portalCameraMaterial: {fileID: 2100000, guid: 75a6f0e64ec043a4a93f09b3e570110d,
     type: 2}
 --- !u!1 &1819067262
@@ -2450,6 +2444,12 @@ Transform:
   m_Father: {fileID: 487772688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1997062441 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2224330248328004237, guid: 5a7c8244cbef9464c8137c6774a5af2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2295250376285099728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2116834119
 GameObject:
   m_ObjectHideFlags: 0
