@@ -82,6 +82,7 @@ MonoBehaviour:
   mouseSensitivity: 1.5
   jumpForceValue: 5
   cam: {fileID: 5377956643999095572}
+  camRotation: 0
 --- !u!1 &5377956643999095572
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +139,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
