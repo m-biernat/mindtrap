@@ -1373,11 +1373,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1669399541}
     m_Modifications:
-    - target: {fileID: 2105461824569136118, guid: 5a8e4b9560478ff418e6f75101f913cf,
-        type: 3}
-      propertyPath: m_Name
-      value: Column02 [2]
-      objectReference: {fileID: 0}
     - target: {fileID: 2105461824569136117, guid: 5a8e4b9560478ff418e6f75101f913cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1432,6 +1427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105461824569136118, guid: 5a8e4b9560478ff418e6f75101f913cf,
+        type: 3}
+      propertyPath: m_Name
+      value: Column02 [2]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a8e4b9560478ff418e6f75101f913cf, type: 3}
@@ -1951,7 +1951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1947669251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2352,6 +2352,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 832172898}
     m_Modifications:
+    - target: {fileID: 2822864618751238600, guid: 31b88c0fafd4a7e47b3ec830c386e2ee,
+        type: 3}
+      propertyPath: prevRoom
+      value: 
+      objectReference: {fileID: 1075751509}
+    - target: {fileID: 2822864618751238600, guid: 31b88c0fafd4a7e47b3ec830c386e2ee,
+        type: 3}
+      propertyPath: nextRoom
+      value: 
+      objectReference: {fileID: 1947669250}
+    - target: {fileID: 0}
+      propertyPath: prevRoom
+      value: 
+      objectReference: {fileID: 832172897}
     - target: {fileID: 4636737863900233643, guid: 31b88c0fafd4a7e47b3ec830c386e2ee,
         type: 3}
       propertyPath: m_Name

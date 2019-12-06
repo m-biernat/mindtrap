@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3044008297487157475}
   - component: {fileID: 3044008297487157476}
   m_Layer: 0
-  m_Name: Pipe
+  m_Name: Column02_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3044008297487157478}
-  m_Mesh: {fileID: -6402532953415861574, guid: d17b4b5b6367f924d99a43fa4f23917c, type: 3}
+  m_Mesh: {fileID: -653435053437490456, guid: d17b4b5b6367f924d99a43fa4f23917c, type: 3}
 --- !u!23 &3044008297487157476
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3044008297629511267}
   - component: {fileID: 3044008297629511268}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Column02_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3044008297629511270}
-  m_Mesh: {fileID: -462981019419857548, guid: d17b4b5b6367f924d99a43fa4f23917c, type: 3}
+  m_Mesh: {fileID: -7424250266624093799, guid: d17b4b5b6367f924d99a43fa4f23917c, type: 3}
 --- !u!23 &3044008297629511268
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 3044008298264332808}
   - component: {fileID: 255155449001633919}
   m_Layer: 0
-  m_Name: Column01
+  m_Name: Column02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
