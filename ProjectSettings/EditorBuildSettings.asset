@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Levels/Portal 01.unity
+    guid: b2ab657e23d127c4a948d6842fcb3d73
+  - enabled: 1
     path: Assets/Scenes/Testing/PortalTest.unity
     guid: d46e54e6d7a60ad4eae7c3ebf464ea6b
   m_configObjects: {}
