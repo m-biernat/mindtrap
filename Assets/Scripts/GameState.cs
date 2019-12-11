@@ -40,7 +40,7 @@ public class GameState : MonoBehaviour
 
         index++;
 
-        if (index >= SceneManager.sceneCount)
+        if (index >= SceneManager.sceneCountInBuildSettings)
         {
             noActiveSave = true;
             savedLevelIndex = 0;
