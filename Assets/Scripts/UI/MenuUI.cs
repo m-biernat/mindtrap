@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
@@ -17,9 +16,15 @@ public class MenuUI : MonoBehaviour
     void Start()
     {
         if (freshStart)
+        {
             currentView = startView;
+            ClientSettings.Load();
+            GameState.Load();
+        }   
         else
+        {
             currentView = defaultView;
+        }
 
         currentView.SetActive(true);
 
@@ -36,17 +41,20 @@ public class MenuUI : MonoBehaviour
 
     public void Play()
     {
-        ChangeView(newGameView); // Temp
+        if (GameState.noActiveSave)
+            ChangeView(newGameView);
+        else
+            ChangeView(continueView);
     }
 
     public void NewGame()
     {
-        ChangeView(continueView); // Temp
+        GameState.LoadLevel(1);
     }
 
     public void Continue()
     {
-        ChangeView(newGameView); // Temp
+        GameState.LoadSavedLevel();
     }
 
     public void Quit()

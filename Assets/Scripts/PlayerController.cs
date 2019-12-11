@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
                  sprintSpeed = 10f,
                  crouchSpeed = 4f;
 
-    public float mouseSensitivity = 2.0f;
-
     public float jumpForceValue = 10f;
 
     [SerializeField]
@@ -74,12 +72,12 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 CalculateRotationY(float yAxisRotation)
     {
-        return new Vector3(0f, yAxisRotation, 0f) * mouseSensitivity;
+        return new Vector3(0f, yAxisRotation, 0f) * ClientSettings.mouseSensitivity;
     }
 
     private Vector3 CalculateRotationX(float xAxisRotation)
     {
-        camRotation += xAxisRotation * mouseSensitivity;
+        camRotation += xAxisRotation * ClientSettings.mouseSensitivity;
         camRotation = Mathf.Clamp(camRotation, -80f, 80f);
         return new Vector3(camRotation, 0f, 0f);
     }
