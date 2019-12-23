@@ -26,15 +26,29 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public float camRotation = 0f;
 
+    [Space]
+    public PlayerUI playerUI;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         distToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
+
+        playerUI.Init();
     }
 
     private void Update()
     {
+        if (PlayerUI.pauseMenuActive)
+        {
+            velocity = CalculateVelocity(0f, 0f);
+            rotationY = CalculateRotationY(0f);
+            rotationX = CalculateRotationX(0f);
+
+            return;
+        }
+
         xAxisMovement = Input.GetAxisRaw("Horizontal");
         zAxisMovement = Input.GetAxisRaw("Vertical");
 

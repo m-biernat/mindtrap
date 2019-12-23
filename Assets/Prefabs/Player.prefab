@@ -79,10 +79,11 @@ MonoBehaviour:
   walkSpeed: 5
   sprintSpeed: 8
   crouchSpeed: 3
-  mouseSensitivity: 1.5
   jumpForceValue: 5
   cam: {fileID: 5377956643999095572}
   camRotation: 0
+  playerUI: {fileID: 5602987838262209881, guid: 0fa9571de401b9340988447e15c1f24b,
+    type: 3}
 --- !u!1 &5377956643999095572
 GameObject:
   m_ObjectHideFlags: 0
