@@ -8,11 +8,7 @@ public class TriggerRespawn : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // FadeOutScreen
-
-            Respawn(other.gameObject);
-
-            // FadeInScreen
+            Fade.instance.FadeOut(() => Respawn(other.gameObject));
         }
     }
 
@@ -21,6 +17,8 @@ public class TriggerRespawn : MonoBehaviour
         player.transform.position = spawnPoint.position;
         player.transform.rotation = spawnPoint.rotation;
         player.GetComponent<PlayerController>().camRotation = 0.0f;
+
+        Fade.instance.FadeIn();
     }
 
     public void SetSpawnPoint(Transform spawnPoint)

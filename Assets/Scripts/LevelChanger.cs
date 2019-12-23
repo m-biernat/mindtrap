@@ -6,7 +6,7 @@ public class LevelChanger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameState.LoadNextLevel();
+            Fade.instance.FadeOut(() => GameState.LoadNextLevel());
         }
     }
 }

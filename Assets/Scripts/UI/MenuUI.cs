@@ -49,16 +49,16 @@ public class MenuUI : MonoBehaviour
 
     public void NewGame()
     {
-        GameState.LoadLevel(1);
+        Fade.instance.FadeOut(() => GameState.LoadLevel(1));
     }
 
     public void Continue()
     {
-        GameState.LoadSavedLevel();
+        Fade.instance.FadeOut(() => GameState.LoadSavedLevel());
     }
 
     public void Quit()
     {
-        Application.Quit();
+        Fade.instance.FadeOut(() => Application.Quit());
     }
 }
