@@ -49,7 +49,7 @@ public class MenuUI : MonoBehaviour
 
     public void NewGame()
     {
-        Fade.instance.FadeOut(() => GameState.LoadLevel(1));
+        Fade.instance.FadeOut(() => GameState.NewGame());
     }
 
     public void Continue()

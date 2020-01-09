@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
                   yAxisRotation = 0f, xAxisRotation = 0f;
 
     [HideInInspector] public float camRotation = 0f;
+    
+    [HideInInspector] public bool controllLock = false;
 
     [Space]
     public PlayerUI playerUI;
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerUI.pauseMenuActive)
+        if (PlayerUI.pauseMenuActive || controllLock)
         {
             velocity = CalculateVelocity(0f, 0f);
             rotationY = CalculateRotationY(0f);

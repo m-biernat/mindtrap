@@ -4,7 +4,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"Intensity\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"e53cf1f8-6ede-4ff3-8a1a-9a725cb447ea\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_EC86FC9E\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Precision\": 0,\n    \"m_Value\": 20.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 20.0,\n        \"y\": 1000.0\n    },\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"Intensity\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"e53cf1f8-6ede-4ff3-8a1a-9a725cb447ea\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_EC86FC9E\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Precision\": 0,\n    \"m_Value\": 20.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1000.0\n    },\n    \"m_Hidden\": false\n}"
         }
     ],
     "m_SerializableNodes": [

@@ -22,11 +22,20 @@ public class MazeGenerator : MonoBehaviour
     [Space]
     public int positionOffset = 3;
 
+    [Space]
+    public GameObject activate;
+
     private void Start()
     {
-        SetAnchorOffset();
+        #if !UNITY_EDITOR
+            seed = GameState.seed;
+        #endif
 
+        SetAnchorOffset();
         GenerateMaze();
+
+        if (activate)
+            activate.SetActive(true);
     }
 
     private void GenerateMaze()

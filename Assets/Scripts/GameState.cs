@@ -7,8 +7,11 @@ public class GameState : MonoBehaviour
     public static bool noActiveSave = true;
     private static int savedLevelIndex = 0;
 
+    public static int seed = 0;
+
     private const string NO_ACTIVE_SAVE_K = "noActiveSave",
-                         SAVED_LEVEL_INDEX_K = "savedLevelIndex";
+                         SAVED_LEVEL_INDEX_K = "savedLevelIndex",
+                         SAVED_GAME_SEED_K = "seed";
 
     public static void Load()
     {
@@ -16,12 +19,14 @@ public class GameState : MonoBehaviour
         {
             noActiveSave = Convert.ToBoolean(PlayerPrefs.GetInt(NO_ACTIVE_SAVE_K));
             savedLevelIndex = PlayerPrefs.GetInt(SAVED_LEVEL_INDEX_K);
+            seed = PlayerPrefs.GetInt(SAVED_GAME_SEED_K);
         }
     }
     public static void Save()
     {
         PlayerPrefs.SetInt(NO_ACTIVE_SAVE_K, Convert.ToInt32(noActiveSave));
         PlayerPrefs.SetInt(SAVED_LEVEL_INDEX_K, savedLevelIndex);
+        PlayerPrefs.SetInt(SAVED_GAME_SEED_K, seed);
     }
 
     public static void LoadLevel(int levelIndex)
@@ -53,5 +58,11 @@ public class GameState : MonoBehaviour
 
         Save();
         LoadSavedLevel();
+    }
+
+    public static void NewGame()
+    {
+        seed = UnityEngine.Random.Range(0, int.MaxValue);
+        LoadNextLevel();
     }
 }

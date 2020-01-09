@@ -43,7 +43,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000002, y: 1, z: 0}
+  m_Size: {x: 1.0000002, y: 1, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1211048699394889491
 MonoBehaviour:
@@ -164,6 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8043466329459113958}
+  - component: {fileID: 2330780080140913696}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -187,3 +188,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2330780080140913696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190477994693835612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf8fbbf39ff73c42a6b35d29cc33a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLuminance: 0
+  renderer: {fileID: 5082265648366966376}
+  trigger: {fileID: 1211048699394889491}
+  function: 0
