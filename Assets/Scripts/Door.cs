@@ -60,6 +60,7 @@ public class Door : MonoBehaviour
 
     private void ChangeLevel()
     {
+        Fade.instance.SetColor(Fade.ColorName.Light);
         Fade.instance.FadeOut(() => GameState.LoadNextLevel());
     }
 }

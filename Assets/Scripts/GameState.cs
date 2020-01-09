@@ -36,6 +36,7 @@ public class GameState : MonoBehaviour
 
     public static void LoadSavedLevel()
     {
+        Load();
         SceneManager.LoadScene(savedLevelIndex, LoadSceneMode.Single);
     }
 
@@ -63,6 +64,6 @@ public class GameState : MonoBehaviour
     public static void NewGame()
     {
         seed = UnityEngine.Random.Range(0, int.MaxValue);
-        LoadNextLevel();
+        LoadLevel(1);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Collections.Generic;
 
 public class Fade : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class Fade : MonoBehaviour
     private Image background;
 
     private Action action;
+
+    public List<Color> colors;
+
+    public enum ColorName
+    { 
+        Gray,
+        Light
+    };
 
     private void Start()
     {
@@ -32,5 +41,10 @@ public class Fade : MonoBehaviour
     public void OnFadeComplete()
     {
         action.Invoke();
+    }
+
+    public void SetColor(ColorName color)
+    {
+        background.color = colors[(int)color];
     }
 }

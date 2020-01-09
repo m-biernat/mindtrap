@@ -49,11 +49,13 @@ public class MenuUI : MonoBehaviour
 
     public void NewGame()
     {
+        Fade.instance.SetColor(Fade.ColorName.Gray);
         Fade.instance.FadeOut(() => GameState.NewGame());
     }
 
     public void Continue()
     {
+        Fade.instance.SetColor(Fade.ColorName.Light);
         Fade.instance.FadeOut(() => GameState.LoadSavedLevel());
     }
 
