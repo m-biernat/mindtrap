@@ -15,6 +15,9 @@ public class PlayerUI : MonoBehaviour
         pauseMenuActive = false;
         SetCursorLock();
 
+        if (!crosshair)
+            crosshair = new GameObject();
+
         Instantiate(eventSystem);
     }
 
