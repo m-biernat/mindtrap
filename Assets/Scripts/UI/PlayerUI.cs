@@ -68,7 +68,7 @@ public class PlayerUI : MonoBehaviour
 
     public void Exit()
     {
-        Fade.instance.SetColor(Fade.ColorName.Gray);
+        Fade.instance.SetColor(Fade.ColorName.Default);
         Fade.instance.FadeOut(() => GameState.LoadLevel(0));
     }
 }

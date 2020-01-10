@@ -49,7 +49,7 @@ public class MenuUI : MonoBehaviour
 
     public void NewGame()
     {
-        Fade.instance.SetColor(Fade.ColorName.Gray);
+        Fade.instance.SetColor(Fade.ColorName.Default);
         Fade.instance.FadeOut(() => GameState.NewGame());
     }
 

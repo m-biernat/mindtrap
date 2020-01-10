@@ -8,7 +8,7 @@ public class TriggerRespawn : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Fade.instance.SetColor(Fade.ColorName.Gray);
+            Fade.instance.SetColor(Fade.ColorName.Default);
             Fade.instance.FadeOut(() => Respawn(other.gameObject));
         }
     }

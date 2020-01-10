@@ -16,8 +16,9 @@ public class Fade : MonoBehaviour
 
     public enum ColorName
     { 
-        Gray,
-        Light
+        Default,
+        Light,
+        Dark
     };
 
     private void Start()
