@@ -201,6 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLuminance: 0
-  renderer: {fileID: 5082265648366966376}
+  m_renderer: {fileID: 5082265648366966376}
   trigger: {fileID: 1211048699394889491}
   function: 0

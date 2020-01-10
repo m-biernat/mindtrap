@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     private float distance;
     private float luminance;
 
-    public new Renderer renderer;
+    public Renderer m_renderer;
 
     private const string FLOAT_NAME = "Vector1_EC86FC9E";
 
@@ -30,7 +30,7 @@ public class Door : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         maxDistance = GetDistance();
 
-        minLuminance = renderer.material.GetFloat(FLOAT_NAME);
+        minLuminance = m_renderer.material.GetFloat(FLOAT_NAME);
 
         switch (function)
         {
@@ -55,7 +55,7 @@ public class Door : MonoBehaviour
         distance = Mathf.Clamp(GetDistance() / maxDistance, 0.0f, 1.0f);
 
         luminance = Mathf.Clamp(maxLuminance * distance, minLuminance, maxLuminance);
-        renderer.material.SetFloat(FLOAT_NAME, luminance);
+        m_renderer.material.SetFloat(FLOAT_NAME, luminance);
     }
 
     private void ChangeLevel()
