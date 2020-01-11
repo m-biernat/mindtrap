@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 2330780080140913696, guid: 1b08d75490608a740bfb9845c7d8fe53,
         type: 3}
       propertyPath: maxLuminance
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b08d75490608a740bfb9845c7d8fe53, type: 3}
