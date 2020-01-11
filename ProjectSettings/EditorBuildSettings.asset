@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Maze 01.unity
     guid: 39dee117f603aff41888e0b4a14761b5
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 02.unity
+    guid: 20f17e29811cafb40b4a41d3b04724db
   m_configObjects: {}

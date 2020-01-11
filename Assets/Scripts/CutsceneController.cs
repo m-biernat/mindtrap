@@ -88,6 +88,15 @@ public class CutsceneController : MonoBehaviour
         playerUI.GetComponent<PlayerUI>().enabled = false;
         playerUI.GetComponent<PlayerUI>().pauseMenu.SetActive(false);
 
-        Debug.Log("DING");
+        playerUI.transform.Find("OnComplete").gameObject.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void TheEnd()
+    {
+        Fade.instance.SetColor(Fade.ColorName.Default);
+        Fade.instance.FadeOut(() => GameState.LoadNextLevel());
     }
 }
