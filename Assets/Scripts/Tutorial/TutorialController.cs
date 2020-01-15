@@ -31,9 +31,9 @@ public class TutorialController : MonoBehaviour
     private float mouseInput = 0.0f;
     private float keyboardInput = 0.0f;
 
-    public GameObject activatedObject;
+    public GameObject interactableObject;
 
-    public GameObject door;
+    public GameObject activatedObject;
     public TutorialTrigger nextLevelTrigger;
 
     private Transform camTransform;
@@ -154,7 +154,7 @@ public class TutorialController : MonoBehaviour
                 break;
 
             case Stage.nextLevel:
-                door.SetActive(true);
+                activatedObject.SetActive(true);
                 nextLevelTrigger.stage = Stage.nextLevel;
                 break;
         }
@@ -162,14 +162,17 @@ public class TutorialController : MonoBehaviour
 
     private IEnumerator Desintegrate()
     {
-        activatedObject.GetComponent<BoxCollider>().enabled = false;
+        interactableObject.GetComponent<BoxCollider>().enabled = false;
+
+        Material mat = interactableObject.GetComponent<Renderer>().material;
 
         for (int i = 0; i < 100; i++)
         {
             yield return new WaitForSeconds(0.01f);
+            mat.SetFloat("_Slider", i / 100.0f);
         }
 
-        activatedObject.SetActive(false);
+        interactableObject.SetActive(false);
 
         SetStage(Stage.nextLevel);
     }
