@@ -11,7 +11,9 @@ public class TutorialController : MonoBehaviour
         keyboard,
         jump,
         sprintJump,
+        faceObject,
         interact,
+        desintegrate,
         nextLevel,
     };
 
@@ -30,6 +32,11 @@ public class TutorialController : MonoBehaviour
     private float keyboardInput = 0.0f;
 
     public GameObject activatedObject;
+
+    public GameObject door;
+    public TutorialTrigger nextLevelTrigger;
+
+    private Transform camTransform;
 
     private void Start()
     {
@@ -68,6 +75,35 @@ public class TutorialController : MonoBehaviour
                 }
             }
         }
+
+        else if (stage == Stage.faceObject || stage == Stage.interact)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, 1.5f))
+            {
+                if (hit.transform.tag == "Interactable")
+                {
+                    SetStage(Stage.interact);
+                }
+                else
+                {
+                    SetStage(Stage.faceObject);
+                }
+            }
+            else
+            {
+                SetStage(Stage.faceObject);
+            }
+
+            if (stage == Stage.interact)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    EndStage(Stage.desintegrate);
+                }
+            }
+        }
     }
 
     private IEnumerator Setup()
@@ -85,22 +121,27 @@ public class TutorialController : MonoBehaviour
         instructionUI.SetActive(true);
 
         instructionText = instructionUI.GetComponent<Text>();
+        camTransform = Camera.main.transform;
         
         SetStage(Stage.mouseLook);
     }
 
     public void SetStage(Stage stage)
     {
-        this.stage = stage;
-        instructionText.text = instructions[(int)stage].ToUpper();
-        InvokeAction();
-        //instructionAnimator.SetTrigger("fadeIn");
+        if (this.stage != stage)
+        {
+            this.stage = stage;
+            instructionText.text = instructions[(int)stage].ToUpper();
+            InvokeAction();
+            //instructionAnimator.SetTrigger("fadeIn");
+        }
     }
 
-    public void EndStage()
+    public void EndStage(Stage endWithStage = Stage.unset)
     {
-        stage = Stage.unset;
+        stage = endWithStage;
         instructionText.text = "";
+        InvokeAction();
         //instructionAnimator.SetTrigger("fadeOut");
     }
 
@@ -108,9 +149,28 @@ public class TutorialController : MonoBehaviour
     {
         switch(stage)
         {
+            case Stage.desintegrate:
+                StartCoroutine(Desintegrate());
+                break;
+
             case Stage.nextLevel:
-                activatedObject.SetActive(true);
+                door.SetActive(true);
+                nextLevelTrigger.stage = Stage.nextLevel;
                 break;
         }
+    }
+
+    private IEnumerator Desintegrate()
+    {
+        activatedObject.GetComponent<BoxCollider>().enabled = false;
+
+        for (int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        activatedObject.SetActive(false);
+
+        SetStage(Stage.nextLevel);
     }
 }
