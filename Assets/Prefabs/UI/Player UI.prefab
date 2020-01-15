@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 2029644551398253395}
   - component: {fileID: 1731930469385235421}
   - component: {fileID: 3683168920656358617}
+  - component: {fileID: 6069522620539697081}
   m_Layer: 5
   m_Name: Instruction
   m_TagString: Untagged
@@ -989,6 +990,25 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!95 &6069522620539697081
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323184814718984004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15c970b2ba88f26449e5191fef4ac8fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6965274090123923758
 GameObject:
   m_ObjectHideFlags: 0

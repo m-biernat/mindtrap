@@ -12,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscenes/Cutscene 01.unity
     guid: 6109fb9434b58f34db594e60bc22910d
   - enabled: 1
-    path: Assets/Scenes/Levels/Portal 01.unity
-    guid: b2ab657e23d127c4a948d6842fcb3d73
+    path: Assets/Scenes/Tutorial.unity
+    guid: 1de1eb5fc8a7f934695e91a706823f3a
   - enabled: 1
     path: Assets/Scenes/Levels/Maze 01.unity
     guid: 39dee117f603aff41888e0b4a14761b5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Portal 01.unity
+    guid: b2ab657e23d127c4a948d6842fcb3d73
   - enabled: 1
     path: Assets/Scenes/Cutscenes/Cutscene 02.unity
     guid: 20f17e29811cafb40b4a41d3b04724db

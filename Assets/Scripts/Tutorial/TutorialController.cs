@@ -18,13 +18,14 @@ public class TutorialController : MonoBehaviour
     };
 
     private Stage stage;
+    private Stage prevStage;
 
     public List<string> instructions;
 
     private GameObject instructionUI;
 
     private Text instructionText;
-    //private Animator instructionAnimator;
+    private Animator instructionAnimator;
 
     private bool[] completed = { false, false };
 
@@ -121,6 +122,7 @@ public class TutorialController : MonoBehaviour
         instructionUI.SetActive(true);
 
         instructionText = instructionUI.GetComponent<Text>();
+        instructionAnimator = instructionUI.GetComponent<Animator>();
         camTransform = Camera.main.transform;
         
         SetStage(Stage.mouseLook);
@@ -130,10 +132,12 @@ public class TutorialController : MonoBehaviour
     {
         if (this.stage != stage)
         {
+            prevStage = this.stage;
             this.stage = stage;
             instructionText.text = instructions[(int)stage].ToUpper();
+            instructionAnimator.SetTrigger("bump");
+
             InvokeAction();
-            //instructionAnimator.SetTrigger("fadeIn");
         }
     }
 
@@ -141,8 +145,8 @@ public class TutorialController : MonoBehaviour
     {
         stage = endWithStage;
         instructionText.text = "";
+   
         InvokeAction();
-        //instructionAnimator.SetTrigger("fadeOut");
     }
 
     private void InvokeAction()
