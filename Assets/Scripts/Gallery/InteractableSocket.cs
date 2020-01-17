@@ -5,17 +5,24 @@ public class InteractableSocket : MonoBehaviour
     public Transform placement;
 
     [HideInInspector] public Exhibition exhibition;
-    [HideInInspector] public int index;
 
     [HideInInspector] public GameObject fittingObject;
     [HideInInspector] public GameObject placedObject;
 
     public void PlaceObject(GameObject go)
     {
-        go.transform.position = placement.position;
-        go.transform.rotation = placement.rotation;
-
         placedObject = go;
-        exhibition.CheckProgress();
+
+        placedObject.transform.SetParent(exhibition.transform);
+
+        placedObject.transform.position = placement.position;
+        placedObject.transform.rotation = placement.rotation;
+
+        placedObject.GetComponent<Collider>().enabled = true;
+
+        placedObject.transform.tag = "Untagged";
+
+        bool value = placedObject == fittingObject ? true : false;
+        exhibition.Proceed(value);
     }
 }

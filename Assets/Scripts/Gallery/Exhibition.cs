@@ -8,14 +8,14 @@ public class Exhibition : MonoBehaviour
 
     [Space]
     public List<InteractableSocket> sockets;
-    
-    private List<InteractableObject> selectedObjects;
+
     private List<bool> correctPlacements;
 
     public Camera easelCamera;
 
     void Start()
     {
+        List<InteractableObject> selectedObjects = new List<InteractableObject>();
         List<InteractableObject> spawnedObjects = new List<InteractableObject>();
 
         foreach (var placement in objectPlacements)
@@ -37,13 +37,12 @@ public class Exhibition : MonoBehaviour
             objects.RemoveAt(index);
         }
 
-        
-        selectedObjects = new List<InteractableObject>();
         correctPlacements = new List<bool>();
 
         for (int i = 0; i < sockets.Count; i++)
         {
             sockets[i].exhibition = this;
+            sockets[i].transform.tag = "Interactable Socket";
 
             int index = Random.Range(0, spawnedObjects.Count);
       
@@ -56,15 +55,11 @@ public class Exhibition : MonoBehaviour
             spawnedObjects[index].transform.rotation = sockets[i].placement.rotation;
 
             sockets[i].fittingObject = spawnedObjects[index].gameObject;
-            sockets[i].index = i;
-
-            correctPlacements.Add(false);
 
             spawnedObjects.RemoveAt(index);
         }
 
         easelCamera.Render();
-
         
         foreach(var selectedObject in selectedObjects)
         {
@@ -72,8 +67,34 @@ public class Exhibition : MonoBehaviour
         }
     }
 
-    public void CheckProgress()
+    public void Proceed(bool value)
     {
-        Debug.Log("DUPA");
+        correctPlacements.Add(value);
+
+        if (correctPlacements.Count == sockets.Count)
+        {
+            bool allCorrect = true;
+
+            foreach (var placement in correctPlacements)
+            {
+                if (placement == false)
+                    allCorrect = false;
+            }
+
+            if (allCorrect)
+            {
+                Debug.Log("DZIALA");
+            }
+            else
+            {
+                foreach (var socket in sockets)
+                {
+                    socket.placedObject.GetComponent<InteractableObject>().Destroy();
+                    socket.placedObject = null;
+                }
+
+                correctPlacements.Clear();
+            }
+        }
     }
 }

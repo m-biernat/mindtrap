@@ -10,8 +10,13 @@ public class InteractableObject : MonoBehaviour
         transform.rotation = placement.rotation;
     }
 
-    public void Reset()
+    public void Destroy()
     {
-
+        GetComponent<Collider>().enabled = true;
+        
+        transform.tag = "Interactable Object";
+        transform.parent = placement.parent; // I'll have to change that later
+        
+        Relocate();
     }
 }
