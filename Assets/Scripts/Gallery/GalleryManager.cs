@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GalleryManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public RenderTexture renderTexture;
+
+    public Exhibition startingExhibition;
+
     void Start()
     {
-        
-    }
+        renderTexture.width = Screen.height;
+        renderTexture.height = Screen.height;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        startingExhibition.enabled = true;
     }
 }

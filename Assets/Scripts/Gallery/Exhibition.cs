@@ -7,56 +7,73 @@ public class Exhibition : MonoBehaviour
     public List<Transform> objectPlacements;
 
     [Space]
-    public List<Transform> sockets;
+    public List<InteractableSocket> sockets;
     
-    private Dictionary<int, GameObject> selectedObjects;
+    private List<InteractableObject> selectedObjects;
+    private List<bool> correctPlacements;
 
     public Camera easelCamera;
 
     void Start()
     {
-        List<int> indices = new List<int>();
-        List<GameObject> spawnedObjects = new List<GameObject>();
+        List<InteractableObject> spawnedObjects = new List<InteractableObject>();
 
-        for (int i = 0; i < objectPlacements.Count; i++)
+        foreach (var placement in objectPlacements)
         {
             int index = Random.Range(0, objects.Count);
 
             GameObject go = Instantiate(objects[index], transform);
-            go.transform.position = objectPlacements[i].position;
-            go.transform.rotation = objectPlacements[i].rotation;
 
-            indices.Add(i);
-            spawnedObjects.Add(go);
+            go.tag = "Interactable Object";
+            go.AddComponent(typeof(InteractableObject));
+
+            InteractableObject interactableObject = go.GetComponent<InteractableObject>();
+            interactableObject.placement = placement;
+
+            interactableObject.Relocate();
+
+            spawnedObjects.Add(interactableObject);
 
             objects.RemoveAt(index);
         }
 
-        selectedObjects = new Dictionary<int, GameObject>();
+        
+        selectedObjects = new List<InteractableObject>();
+        correctPlacements = new List<bool>();
 
-        foreach (var socket in sockets)
+        for (int i = 0; i < sockets.Count; i++)
         {
-            int index = Random.Range(0, indices.Count);
-            int key = indices[index];
-            
-            selectedObjects.Add(key, spawnedObjects[key]);
-            
-            selectedObjects[key].transform.position = socket.position;
-            selectedObjects[key].transform.rotation = socket.rotation;
+            sockets[i].exhibition = this;
 
-            indices.RemoveAt(index);
+            int index = Random.Range(0, spawnedObjects.Count);
+      
+            selectedObjects.Add(spawnedObjects[index]);
+
+            if (sockets[i].placement == null)
+                sockets[i].placement = sockets[i].transform;
+
+            spawnedObjects[index].transform.position = sockets[i].placement.position;
+            spawnedObjects[index].transform.rotation = sockets[i].placement.rotation;
+
+            sockets[i].fittingObject = spawnedObjects[index].gameObject;
+            sockets[i].index = i;
+
+            correctPlacements.Add(false);
+
             spawnedObjects.RemoveAt(index);
         }
 
-        indices = null;
-        spawnedObjects = null;
-
         easelCamera.Render();
 
+        
         foreach(var selectedObject in selectedObjects)
         {
-            selectedObject.Value.transform.position = objectPlacements[selectedObject.Key].position;
-            selectedObject.Value.transform.rotation = objectPlacements[selectedObject.Key].rotation;
+            selectedObject.Relocate();
         }
+    }
+
+    public void CheckProgress()
+    {
+        Debug.Log("DUPA");
     }
 }

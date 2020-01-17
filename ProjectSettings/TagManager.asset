@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerUI
   - Interactable
+  - Interactable Object
+  - Interactable Socket
   layers:
   - Default
   - TransparentFX

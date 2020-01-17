@@ -305,7 +305,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275946408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faa82c20e0e4f924b8f95c53ca58ed58, type: 3}
   m_Name: 
@@ -317,7 +317,7 @@ MonoBehaviour:
   - {fileID: 2136643892}
   - {fileID: 1484885910}
   sockets:
-  - {fileID: 1671219015}
+  - {fileID: 1947669255}
   easelCamera: {fileID: 6421234543701289032}
 --- !u!1 &1484885909
 GameObject:
@@ -393,6 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054bc007b1407bb4b932145162f2f161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderTexture: {fileID: 8400000, guid: a12f4e2754d28254d964088b6efa80c2, type: 2}
+  startingExhibition: {fileID: 1275946410}
 --- !u!1 &1671219014
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +437,7 @@ GameObject:
   - component: {fileID: 1947669253}
   - component: {fileID: 1947669252}
   - component: {fileID: 1947669251}
+  - component: {fileID: 1947669255}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -515,6 +518,23 @@ Transform:
   m_Father: {fileID: 1275946409}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1947669255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947669250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e242fcf63bc28641a773bb65a05daa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placement: {fileID: 1671219015}
+  exhibition: {fileID: 0}
+  index: 0
+  fittingObject: {fileID: 0}
+  placedObject: {fileID: 0}
 --- !u!4 &2039636667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 137071386794239475, guid: f2ad3d909cafc9a4990fdc6a261daa96,
