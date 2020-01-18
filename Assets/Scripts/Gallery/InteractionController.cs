@@ -145,21 +145,16 @@ public class InteractionController : MonoBehaviour
     private void PickUp(GameObject go)
     {
         pickedObject = go;
-        
-        pickedObject.transform.SetParent(transform);
-        pickedObject.transform.localPosition = Vector3.forward * 2.0f;
-        pickedObject.transform.localEulerAngles = new Vector3();
 
-        pickedObject.GetComponent<Collider>().enabled = false;
+        go.GetComponent<InteractableObject>().PickUp(transform);
 
         SetInteraction(Interaction.none, null);
     }
 
     private void Place(Transform transform)
     {
-        InteractableSocket interactableSocket = transform.GetComponent<InteractableSocket>();
-
-        interactableSocket.PlaceObject(pickedObject);
+        transform.GetComponent<InteractableSocket>().PlaceObject(pickedObject);
+        
         pickedObject = null;
 
         SetInteraction(Interaction.none, null);
@@ -168,6 +163,7 @@ public class InteractionController : MonoBehaviour
     private void Drop()
     {
         pickedObject.GetComponent<InteractableObject>().Destroy();
+        
         pickedObject = null;
 
         SetInteraction(Interaction.none, null);

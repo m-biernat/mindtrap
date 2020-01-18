@@ -36,7 +36,7 @@ public class Exhibition : MonoBehaviour
             InteractableObject interactableObject = go.GetComponent<InteractableObject>();
             interactableObject.placement = placement;
 
-            interactableObject.Relocate();
+            interactableObject.Init();
 
             spawnedObjects.Add(interactableObject);
 
@@ -57,8 +57,7 @@ public class Exhibition : MonoBehaviour
             if (sockets[i].placement == null)
                 sockets[i].placement = sockets[i].transform;
 
-            spawnedObjects[index].transform.position = sockets[i].placement.position;
-            spawnedObjects[index].transform.rotation = sockets[i].placement.rotation;
+            spawnedObjects[index].Relocate(sockets[i].placement);
 
             sockets[i].fittingObject = spawnedObjects[index].gameObject;
 
@@ -69,7 +68,7 @@ public class Exhibition : MonoBehaviour
         
         foreach(var selectedObject in selectedObjects)
         {
-            selectedObject.Relocate();
+            selectedObject.Relocate(selectedObject.placement);
         }
     }
 

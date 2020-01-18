@@ -13,14 +13,7 @@ public class InteractableSocket : MonoBehaviour
     {
         placedObject = go;
 
-        placedObject.transform.SetParent(exhibition.transform);
-
-        placedObject.transform.position = placement.position;
-        placedObject.transform.rotation = placement.rotation;
-
-        placedObject.GetComponent<Collider>().enabled = true;
-
-        placedObject.transform.tag = "Untagged";
+        go.GetComponent<InteractableObject>().Place(placement);
 
         bool value = placedObject == fittingObject ? true : false;
         exhibition.Proceed(value);

@@ -4,10 +4,42 @@ public class InteractableObject : MonoBehaviour
 {
     [HideInInspector] public Transform placement;
 
-    public void Relocate()
+    [HideInInspector] public Vector3 position;
+    [HideInInspector] public Vector3 rotation;
+
+    public void Init()
     {
-        transform.position = placement.position;
-        transform.rotation = placement.rotation;
+        position = transform.localPosition;
+        rotation = transform.localEulerAngles;
+
+        Relocate(placement);
+    }
+
+    public void Relocate(Transform target)
+    {
+        transform.position = target.position + position;
+        transform.eulerAngles = target.eulerAngles + rotation;
+    }
+
+    public void PickUp(Transform playerTransform)
+    {
+        transform.SetParent(playerTransform);
+        
+        transform.localPosition = (Vector3.forward * 1.5f);
+        transform.localEulerAngles = rotation;
+
+        GetComponent<Collider>().enabled = false;
+    }
+
+    public void Place(Transform socketPlacement)
+    {
+        transform.parent = placement.parent; // I'll have to change that later
+
+        Relocate(socketPlacement);
+
+        GetComponent<Collider>().enabled = true;
+
+        transform.tag = "Untagged";
     }
 
     public void Destroy()
@@ -17,6 +49,6 @@ public class InteractableObject : MonoBehaviour
         transform.tag = "Interactable Object";
         transform.parent = placement.parent; // I'll have to change that later
         
-        Relocate();
+        Relocate(placement);
     }
 }
