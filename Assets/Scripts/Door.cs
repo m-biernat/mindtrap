@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class Door : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class Door : MonoBehaviour
 
     public DoorTrigger trigger;
 
+    public Action teleportAction;
+
     public enum Selection
     {
         ChangeLevel,
+        Teleport
     };
 
     public Selection function;
@@ -36,6 +40,10 @@ public class Door : MonoBehaviour
         {
             case Selection.ChangeLevel:
                 trigger.action = ChangeLevel;
+                break;
+
+            case Selection.Teleport:
+                trigger.action = Teleport;
                 break;
         }
     }
@@ -62,5 +70,11 @@ public class Door : MonoBehaviour
     {
         Fade.instance.SetColor(Fade.ColorName.Light);
         Fade.instance.FadeOut(() => GameState.LoadNextLevel());
+    }
+
+    private void Teleport()
+    {
+        Fade.instance.SetColor(Fade.ColorName.Light);
+        Fade.instance.FadeOut(teleportAction);
     }
 }

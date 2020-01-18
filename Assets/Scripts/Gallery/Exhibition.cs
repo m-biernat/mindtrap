@@ -13,6 +13,12 @@ public class Exhibition : MonoBehaviour
 
     public Camera easelCamera;
 
+    [Space]
+    public Door door;
+
+    public Exhibition nextExhibition;
+    public Transform spawnPoint;
+
     void Start()
     {
         List<InteractableObject> selectedObjects = new List<InteractableObject>();
@@ -83,7 +89,8 @@ public class Exhibition : MonoBehaviour
 
             if (allCorrect)
             {
-                Debug.Log("DZIALA");
+                door.teleportAction = ChangeExhibition;
+                door.gameObject.SetActive(true);
             }
             else
             {
@@ -96,5 +103,21 @@ public class Exhibition : MonoBehaviour
                 correctPlacements.Clear();
             }
         }
+    }
+
+    public void ChangeExhibition()
+    {
+        nextExhibition.gameObject.SetActive(true);
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        
+        player.transform.position = nextExhibition.spawnPoint.position;
+        player.transform.rotation = nextExhibition.spawnPoint.rotation;
+
+        gameObject.SetActive(false);
+
+        Fade.instance.FadeIn();
+
+        player.GetComponent<PlayerController>().controllLock = false;
     }
 }
