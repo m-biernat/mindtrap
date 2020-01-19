@@ -47,17 +47,15 @@ public class InteractableObject : MonoBehaviour
         transform.tag = "Untagged";
     }
 
-    public void Destroy(int delay = 0)
+    public void Destroy(float delay = 0.0f)
     {
         StartCoroutine(Dissolve(delay));
     }
 
-    private IEnumerator Dissolve(int delay)
+    private IEnumerator Dissolve(float delay)
     {
-        for (int i = 0; i < delay * 10; i++)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
+        if (delay > 0.0f)
+            yield return new WaitForSeconds(delay);
 
         for (int i = 0; i < 50; i++)
         {

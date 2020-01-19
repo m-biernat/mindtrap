@@ -104,7 +104,7 @@ public class Exhibition : MonoBehaviour
             {
                 foreach (var socket in sockets)
                 {
-                    socket.placedObject.GetComponent<InteractableObject>().Destroy();
+                    socket.placedObject.GetComponent<InteractableObject>().Destroy(1.5f);
                     socket.placedObject = null;
                 }
 
