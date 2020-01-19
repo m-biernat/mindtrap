@@ -9,7 +9,7 @@ public class GalleryManager : MonoBehaviour
     void Start()
     {
         renderTexture.width = Screen.height;
-        renderTexture.height = Screen.height;
+        renderTexture.height = (int)(Screen.height * 1.5f);
 
         startingExhibition.enabled = true;
     }
