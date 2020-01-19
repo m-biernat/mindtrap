@@ -9,6 +9,7 @@ public class Exhibition : MonoBehaviour
     [Space]
     public List<InteractableSocket> sockets;
 
+    private List<InteractableObject> spawnedObjects;
     private List<bool> correctPlacements;
 
     public Camera easelCamera;
@@ -19,10 +20,12 @@ public class Exhibition : MonoBehaviour
     public Exhibition nextExhibition;
     public Transform spawnPoint;
 
+    [Space]
+    public Transform effect;
+
     void Start()
     {
-        List<InteractableObject> selectedObjects = new List<InteractableObject>();
-        List<InteractableObject> spawnedObjects = new List<InteractableObject>();
+        spawnedObjects = new List<InteractableObject>();
 
         foreach (var placement in objectPlacements)
         {
@@ -44,6 +47,7 @@ public class Exhibition : MonoBehaviour
         }
 
         correctPlacements = new List<bool>();
+        List<InteractableObject> selectedObjects = new List<InteractableObject>();
 
         for (int i = 0; i < sockets.Count; i++)
         {
@@ -90,6 +94,11 @@ public class Exhibition : MonoBehaviour
             {
                 door.teleportAction = ChangeExhibition;
                 door.gameObject.SetActive(true);
+
+                foreach (var spawnedObject in spawnedObjects)
+                {
+                    spawnedObject.transform.tag = "Untagged";
+                }
             }
             else
             {
@@ -114,6 +123,9 @@ public class Exhibition : MonoBehaviour
         player.transform.rotation = nextExhibition.spawnPoint.rotation;
 
         gameObject.SetActive(false);
+
+        if (effect)
+            effect.position = nextExhibition.transform.position;
 
         Fade.instance.FadeIn();
 

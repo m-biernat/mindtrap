@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class InteractableObject : MonoBehaviour
 {
@@ -7,10 +8,14 @@ public class InteractableObject : MonoBehaviour
     [HideInInspector] public Vector3 position;
     [HideInInspector] public Vector3 rotation;
 
+    private Material material;
+
     public void Init()
     {
         position = transform.localPosition;
         rotation = transform.localEulerAngles;
+
+        material = GetComponent<Renderer>().material;
 
         Relocate(placement);
     }
@@ -42,13 +47,35 @@ public class InteractableObject : MonoBehaviour
         transform.tag = "Untagged";
     }
 
-    public void Destroy()
+    public void Destroy(int delay = 0)
     {
+        StartCoroutine(Dissolve(delay));
+    }
+
+    private IEnumerator Dissolve(int delay)
+    {
+        for (int i = 0; i < delay * 10; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        for (int i = 0; i < 50; i++)
+        {
+            material.SetFloat("_Slider", i / 50.0f);
+            yield return new WaitForSeconds(0.01f);
+        }
+
         GetComponent<Collider>().enabled = true;
-        
+
         transform.tag = "Interactable Object";
         transform.parent = placement.parent; // I'll have to change that later
-        
+
         Relocate(placement);
+
+        for (int i = 50; i > 0; i--)
+        {
+            material.SetFloat("_Slider", i / 50.0f);
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }
