@@ -8,14 +8,14 @@ public class InteractableObject : MonoBehaviour
     [HideInInspector] public Vector3 position;
     [HideInInspector] public Vector3 rotation;
 
-    private Material material;
+    private Renderer m_renderer;
 
     public void Init()
     {
         position = transform.localPosition;
         rotation = transform.localEulerAngles;
 
-        material = GetComponent<Renderer>().material;
+        m_renderer = GetComponent<Renderer>();
 
         Relocate(placement);
     }
@@ -61,7 +61,11 @@ public class InteractableObject : MonoBehaviour
 
         for (int i = 0; i < 50; i++)
         {
-            material.SetFloat("_Slider", i / 50.0f);
+            foreach (var material in m_renderer.materials)
+            {
+                material.SetFloat("_Slider", i / 50.0f);
+            }
+
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -74,7 +78,11 @@ public class InteractableObject : MonoBehaviour
 
         for (int i = 50; i > 0; i--)
         {
-            material.SetFloat("_Slider", i / 50.0f);
+            foreach (var material in m_renderer.materials)
+            {
+                material.SetFloat("_Slider", i / 50.0f);
+            }
+
             yield return new WaitForSeconds(0.01f);
         }
     }
