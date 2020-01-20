@@ -13,6 +13,8 @@ public class InteractableSocket : MonoBehaviour
     {
         placedObject = go;
 
+        GetComponent<Collider>().enabled = false;
+
         go.GetComponent<InteractableObject>().Place(placement);
 
         bool value = placedObject == fittingObject ? true : false;
