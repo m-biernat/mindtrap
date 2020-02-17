@@ -9,6 +9,7 @@ public class InteractableObject : MonoBehaviour
     [HideInInspector] public Vector3 rotation;
 
     private Renderer m_renderer;
+    private AudioSource audioSource;
 
     public void Init()
     {
@@ -16,6 +17,7 @@ public class InteractableObject : MonoBehaviour
         rotation = transform.localEulerAngles;
 
         m_renderer = GetComponent<Renderer>();
+        audioSource = GetComponent<AudioSource>();
 
         Relocate(placement);
     }
@@ -57,6 +59,8 @@ public class InteractableObject : MonoBehaviour
         if (delay > 0.0f)
             yield return new WaitForSeconds(delay);
 
+        audioSource.Play();
+
         for (int i = 0; i < 50; i++)
         {
             foreach (var material in m_renderer.materials)
@@ -73,6 +77,8 @@ public class InteractableObject : MonoBehaviour
         transform.parent = placement.parent; // I'll have to change that later
 
         Relocate(placement);
+
+        audioSource.Play();
 
         for (int i = 50; i > 0; i--)
         {

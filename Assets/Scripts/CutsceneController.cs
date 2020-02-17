@@ -22,6 +22,8 @@ public class CutsceneController : MonoBehaviour
 
     public float mouseDownturn;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -88,7 +90,10 @@ public class CutsceneController : MonoBehaviour
         playerUI.GetComponent<PlayerUI>().enabled = false;
         playerUI.GetComponent<PlayerUI>().pauseMenu.SetActive(false);
 
-        playerUI.transform.Find("OnComplete").gameObject.SetActive(true);
+        GameObject onComplete = playerUI.transform.Find("OnComplete").gameObject;
+        onComplete.SetActive(true);
+        
+        audioSource = onComplete.GetComponent<AudioSource>();
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -96,6 +101,8 @@ public class CutsceneController : MonoBehaviour
 
     public void TheEnd()
     {
+        audioSource.Play();
+
         Fade.instance.SetColor(Fade.ColorName.Default);
         Fade.instance.FadeOut(() => GameState.LoadNextLevel());
     }

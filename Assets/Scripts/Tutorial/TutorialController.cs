@@ -39,6 +39,8 @@ public class TutorialController : MonoBehaviour
 
     private Transform camTransform;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
         StartCoroutine(Setup());
@@ -124,7 +126,9 @@ public class TutorialController : MonoBehaviour
         instructionText = instructionUI.GetComponent<Text>();
         instructionAnimator = instructionUI.GetComponent<Animator>();
         camTransform = Camera.main.transform;
-        
+
+        audioSource = instructionUI.GetComponent<AudioSource>();
+
         SetStage(Stage.mouseLook);
     }
 
@@ -134,6 +138,8 @@ public class TutorialController : MonoBehaviour
         {
             prevStage = this.stage;
             this.stage = stage;
+            
+            audioSource.Play();
             instructionText.text = instructions[(int)stage].ToUpper();
             instructionAnimator.SetTrigger("bump");
 
@@ -167,6 +173,8 @@ public class TutorialController : MonoBehaviour
     private IEnumerator Desintegrate()
     {
         interactableObject.GetComponent<BoxCollider>().enabled = false;
+
+        interactableObject.GetComponent<AudioSource>().Play();
 
         Material mat = interactableObject.GetComponent<Renderer>().material;
 

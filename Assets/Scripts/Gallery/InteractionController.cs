@@ -32,6 +32,8 @@ public class InteractionController : MonoBehaviour
     private Text instructionText;
     private Animator instructionAnimator;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
         camTransform = Camera.main.transform;
@@ -88,6 +90,7 @@ public class InteractionController : MonoBehaviour
 
         instructionText = instructionUI.GetComponent<Text>();
         instructionAnimator = instructionUI.GetComponent<Animator>();
+        audioSource = instructionUI.GetComponent<AudioSource>();
 
         SetInstructionText();
     }
@@ -135,6 +138,7 @@ public class InteractionController : MonoBehaviour
 
         if (index > 0)
         {
+            audioSource.Play();
             instructionText.text = instructions[index].ToUpper();
             instructionAnimator.SetTrigger("bump");
         }
