@@ -10,6 +10,8 @@ public class PlayerUI : MonoBehaviour
     [Space]
     public GameObject eventSystem;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
         pauseMenuActive = false;
@@ -19,6 +21,8 @@ public class PlayerUI : MonoBehaviour
             crosshair = new GameObject();
 
         Instantiate(eventSystem);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -36,9 +40,12 @@ public class PlayerUI : MonoBehaviour
 
     private void ToggleActive()
     {
+        audioSource.Play();
+        
         pauseMenuActive = !pauseMenuActive;
         pauseMenu.SetActive(pauseMenuActive);
         crosshair.SetActive(!pauseMenuActive);
+        
         SetCursorLock();
     }
 
@@ -63,11 +70,12 @@ public class PlayerUI : MonoBehaviour
 
     public void Options()
     {
-
+        audioSource.Play();
     }
 
     public void Exit()
     {
+        audioSource.Play();
         Fade.instance.SetColor(Fade.ColorName.Default);
         Fade.instance.FadeOut(() => GameState.LoadLevel(0));
     }

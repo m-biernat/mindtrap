@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1806751165956690262}
   - component: {fileID: 1806751165956690263}
   - component: {fileID: 243679496752320687}
+  - component: {fileID: 7288329166624749452}
   m_Layer: 5
   m_Name: FADE
   m_TagString: Untagged
@@ -110,3 +111,16 @@ MonoBehaviour:
   - {r: 0.41960785, g: 0.43529412, b: 0.52156866, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &7288329166624749452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806751165956690257}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aea2551baff7654d8988e96ddb4e7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0
