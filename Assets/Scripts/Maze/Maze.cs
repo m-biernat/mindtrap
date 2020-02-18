@@ -60,8 +60,8 @@ public class Maze
         }
         while (availableNeighbors.Count != 0);
 
-        grid[0, initialX] = visited;
-        grid[rows - 1, initialX] = visited;
+        grid[0, width] = visited;
+        grid[rows - 1, width] = visited;
     }
 
     private void GridInit()

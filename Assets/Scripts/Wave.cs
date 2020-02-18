@@ -65,7 +65,7 @@ public class Wave : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         for (int i = 0; i < m_edgeCount; i++)
         {

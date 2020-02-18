@@ -8,9 +8,14 @@ public class PlayerUI : MonoBehaviour
     public GameObject crosshair;
 
     [Space]
+    public GameObject defaultView;
+    public GameObject settingsView;
+
+    [Space]
     public GameObject eventSystem;
 
-    private AudioSource audioSource;
+    [HideInInspector]
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -63,14 +68,21 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    public void ToggleView()
+    {
+        defaultView.SetActive(!defaultView.activeSelf);
+        settingsView.SetActive(!settingsView.activeSelf);
+    }
+
     public void Resume()
     {
         ToggleActive();
     }
 
-    public void Options()
+    public void Settings()
     {
         audioSource.Play();
+        ToggleView();
     }
 
     public void Exit()

@@ -173,10 +173,10 @@ MonoBehaviour:
   endPointAnchor: {fileID: 1416104396}
   fillTileSpaces: 1
   width: 11
-  height: 13
-  initialX: -1
-  initialY: 1
-  seed: 10
+  height: 11
+  initialX: 1
+  initialY: -1
+  seed: 11
   positionOffset: 6
   activate: {fileID: 1948415947}
 --- !u!1 &653260035
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5457502404869232744, guid: 8c2d5715e7c364148a5def3519f3d5eb, type: 3}
-  edgeCount: 100
+  edgeCount: 90
   yRotation: 45
   spacing: 6
   rounded: 1
@@ -821,7 +821,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913537130}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -61, z: 83.5}
+  m_LocalPosition: {x: 0, y: -61, z: 67.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1669399541}
