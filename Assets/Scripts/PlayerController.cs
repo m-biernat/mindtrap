@@ -6,8 +6,7 @@ public class PlayerController : MonoBehaviour
     private float speed;
 
     public float walkSpeed = 6f,
-                 sprintSpeed = 10f,
-                 crouchSpeed = 4f;
+                 sprintSpeed = 10f;
 
     public float jumpForceValue = 10f;
 
@@ -65,9 +64,6 @@ public class PlayerController : MonoBehaviour
         { speed = sprintSpeed; }
         else
         { speed = walkSpeed; }
-
-        if (Input.GetButton("Crouch") && !Input.GetButton("Sprint"))
-        { speed = crouchSpeed; }
 
         rotationY = CalculateRotationY(yAxisRotation);
         rotationX = CalculateRotationX(xAxisRotation);

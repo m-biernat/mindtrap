@@ -2,7 +2,7 @@
 
 public static class ClientSettings
 {
-    private const float DEFAULT_M_SENSITIVITY = 2.5f;
+    private const float DEFAULT_M_SENSITIVITY = 2.0f;
     private const float DEFAULT_VOLUME = 0.9f;
 
     public static float mouseSensitivity = DEFAULT_M_SENSITIVITY;
