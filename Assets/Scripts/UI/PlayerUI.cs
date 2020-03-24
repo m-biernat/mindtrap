@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -46,11 +47,16 @@ public class PlayerUI : MonoBehaviour
     private void ToggleActive()
     {
         audioSource.Play();
-        
+
+        if (settingsView.activeSelf)
+            ToggleView();
+        else
+            SetSelectedButton(defaultView);
+
         pauseMenuActive = !pauseMenuActive;
         pauseMenu.SetActive(pauseMenuActive);
         crosshair.SetActive(!pauseMenuActive);
-        
+
         SetCursorLock();
     }
 
@@ -68,10 +74,21 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    private void SetSelectedButton(GameObject currentView)
+    {
+        var selectedButton = currentView.transform.GetChild(0).gameObject;
+        EventSystem.current.SetSelectedGameObject(selectedButton);
+    }
+
     public void ToggleView()
     {
         defaultView.SetActive(!defaultView.activeSelf);
         settingsView.SetActive(!settingsView.activeSelf);
+
+        if (defaultView.activeSelf)
+            SetSelectedButton(defaultView);
+        else
+            SetSelectedButton(settingsView);
     }
 
     public void Resume()

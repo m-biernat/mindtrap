@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MenuUI : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class MenuUI : MonoBehaviour
         currentView.SetActive(false);
         currentView = view;
         currentView.SetActive(true);
+
+        var firstButton = currentView.transform.GetChild(0).gameObject;
+        EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
     public void Play()
