@@ -52,8 +52,8 @@ public class TutorialController : MonoBehaviour
         {
             if (!completed[0])
             {
-                mouseInput += Mathf.Abs(Input.GetAxisRaw("Mouse X"));
-                mouseInput += Mathf.Abs(Input.GetAxisRaw("Mouse Y"));
+                mouseInput += Mathf.Abs(Input.GetAxisRaw("MouseLook X"));
+                mouseInput += Mathf.Abs(Input.GetAxisRaw("MouseLook Y"));
 
                 if (mouseInput > 15.0f)
                 {
@@ -68,8 +68,8 @@ public class TutorialController : MonoBehaviour
 
             if (!completed[1])
             {
-                keyboardInput += Mathf.Abs(Input.GetAxisRaw("Horizontal"));
-                keyboardInput += Mathf.Abs(Input.GetAxisRaw("Vertical"));
+                keyboardInput += Mathf.Abs(Input.GetAxisRaw("Movement X"));
+                keyboardInput += Mathf.Abs(Input.GetAxisRaw("Movement Y"));
 
                 if (keyboardInput > 50.0f)
                 {
@@ -101,7 +101,7 @@ public class TutorialController : MonoBehaviour
 
             if (stage == Stage.interact)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetButtonDown("Interact"))
                 {
                     EndStage(Stage.desintegrate);
                 }

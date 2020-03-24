@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity = Vector3.zero, jumpForce = Vector3.zero,
                     rotationY = Vector3.zero, rotationX = Vector3.zero;
 
-    private float xAxisMovement = 0f, zAxisMovement = 0f,
+    private float xAxisMovement = 0f, yAxisMovement = 0f,
                   yAxisRotation = 0f, xAxisRotation = 0f;
 
     [HideInInspector] public float camRotation = 0f;
@@ -50,17 +50,17 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        xAxisMovement = Input.GetAxisRaw("Horizontal");
-        zAxisMovement = Input.GetAxisRaw("Vertical");
+        xAxisMovement = Input.GetAxisRaw("Movement X");
+        yAxisMovement = Input.GetAxisRaw("Movement Y");
 
-        yAxisRotation = Input.GetAxisRaw("Mouse X");
-        xAxisRotation = Input.GetAxisRaw("Mouse Y");
+        yAxisRotation = Input.GetAxisRaw("MouseLook X");
+        xAxisRotation = Input.GetAxisRaw("MouseLook Y");
 
         jumpForce = Vector3.zero;
         if (Input.GetButtonDown("Jump"))
         { jumpForce = Vector3.up * jumpForceValue; }
 
-        if (Input.GetButton("Sprint") && (zAxisMovement > 0))
+        if (Input.GetButton("Sprint") && (yAxisMovement > 0))
         { speed = sprintSpeed; }
         else
         { speed = walkSpeed; }
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         rotationY = CalculateRotationY(yAxisRotation);
         rotationX = CalculateRotationX(xAxisRotation);
 
-        velocity = CalculateVelocity(xAxisMovement, zAxisMovement);
+        velocity = CalculateVelocity(xAxisMovement, yAxisMovement);
 
         ApplyMovement();
         ApplyRotation();

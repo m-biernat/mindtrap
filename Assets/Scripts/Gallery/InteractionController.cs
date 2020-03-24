@@ -67,7 +67,7 @@ public class InteractionController : MonoBehaviour
 
         if (interaction != Interaction.none)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Interact"))
             {
                 action.Invoke();
             }

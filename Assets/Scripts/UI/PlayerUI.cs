@@ -32,7 +32,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Menu"))
         {
             ToggleActive();
         }

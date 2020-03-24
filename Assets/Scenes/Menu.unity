@@ -8090,8 +8090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: Movement X
+  m_VerticalAxis: Movement Y
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -8848,11 +8848,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 509234675}
     m_Modifications:
-    - target: {fileID: 1806751165956690257, guid: 859d641e9e7235c49a4d9391061a4f25,
-        type: 3}
-      propertyPath: m_Name
-      value: FADE
-      objectReference: {fileID: 0}
     - target: {fileID: 1806751165956690256, guid: 859d641e9e7235c49a4d9391061a4f25,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8957,6 +8952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806751165956690257, guid: 859d641e9e7235c49a4d9391061a4f25,
+        type: 3}
+      propertyPath: m_Name
+      value: FADE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 859d641e9e7235c49a4d9391061a4f25, type: 3}
