@@ -43,8 +43,8 @@ public class CutsceneController : MonoBehaviour
 
         animator.enabled = true;
 
-        yAxisRotation = Input.GetAxisRaw("Mouse X");
-        xAxisRotation = Input.GetAxisRaw("Mouse Y");
+        yAxisRotation = Input.GetAxisRaw("MouseLook X");
+        xAxisRotation = Input.GetAxisRaw("MouseLook Y");
 
         Vector3 rotation = CalculateRotation();
         rotation.y += yAxisOffset;
