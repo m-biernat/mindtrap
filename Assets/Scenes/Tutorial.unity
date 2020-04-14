@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2809483, g: 0.36618268, b: 0.49851677, a: 1}
+  m_IndirectSpecularColor: {r: 0.28094825, g: 0.3661819, b: 0.49851537, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3563,16 +3563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb87bacd951d814abe13ac5718abbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructions:
-  - UNSET
-  - Use your <b>mouse</b> to look around
-  - Press <b>W</b>, <b>A</b>, <b>S</b>, <b>D</b> keys to move
-  - Press <b>SPACEBAR</b> while moving to jump
-  - Press <b>LSHIFT</b> and <b>SPACEBAR</b> to jump further
-  - Come close facing the object to interact
-  - Press <b>E</b> to activate
-  - DESINTEGRATE
-  - Go through the door
+  instructions: {fileID: 11400000, guid: ae46bb4ac1ac86645a6c0ce284da47a4, type: 2}
   interactableObject: {fileID: 8858191421470566077}
   activatedObject: {fileID: 497062171}
   nextLevelTrigger: {fileID: 113109685}
@@ -4047,6 +4038,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2330780080140913696, guid: 1b08d75490608a740bfb9845c7d8fe53,
+        type: 3}
+      propertyPath: maxLuminance
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5190477994693835612, guid: 1b08d75490608a740bfb9845c7d8fe53,
         type: 3}
       propertyPath: m_Name
@@ -4126,11 +4122,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.80000097
-      objectReference: {fileID: 0}
-    - target: {fileID: 2330780080140913696, guid: 1b08d75490608a740bfb9845c7d8fe53,
-        type: 3}
-      propertyPath: maxLuminance
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b08d75490608a740bfb9845c7d8fe53, type: 3}

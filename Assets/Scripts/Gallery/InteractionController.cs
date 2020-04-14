@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 public class InteractionController : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class InteractionController : MonoBehaviour
     private GameObject pickedObject;
 
 
-    public List<string> instructions;
+    public CaptionText instructions;
 
     private GameObject instructionUI;
 
@@ -139,7 +138,7 @@ public class InteractionController : MonoBehaviour
         if (index > 0)
         {
             audioSource.Play();
-            instructionText.text = instructions[index].ToUpper();
+            instructionText.text = instructions.GetText(index).ToUpper();
             instructionAnimator.SetTrigger("bump");
         }
         else

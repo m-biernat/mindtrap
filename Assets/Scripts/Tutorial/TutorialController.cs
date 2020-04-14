@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 public class TutorialController : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class TutorialController : MonoBehaviour
     private Stage stage;
     private Stage prevStage;
 
-    public List<string> instructions;
+    public CaptionText instructions;
 
     private GameObject instructionUI;
 
@@ -50,6 +49,9 @@ public class TutorialController : MonoBehaviour
     {
         if (stage == Stage.mouseLook || stage == Stage.keyboard)
         {
+            if (PlayerUI.pauseMenuActive)
+                return;
+
             if (!completed[0])
             {
                 mouseInput += Mathf.Abs(Input.GetAxisRaw("MouseLook X"));
@@ -140,7 +142,7 @@ public class TutorialController : MonoBehaviour
             this.stage = stage;
             
             audioSource.Play();
-            instructionText.text = instructions[(int)stage].ToUpper();
+            instructionText.text = instructions.GetText((int)stage).ToUpper();
             instructionAnimator.SetTrigger("bump");
 
             InvokeAction();
