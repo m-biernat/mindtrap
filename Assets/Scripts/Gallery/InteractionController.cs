@@ -66,9 +66,15 @@ public class InteractionController : MonoBehaviour
 
         if (interaction != Interaction.none)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (interaction == Interaction.drop)
             {
-                action.Invoke();
+                if (Input.GetButtonDown("Interact 2"))
+                    action.Invoke();
+            }
+            else
+            {
+                if (Input.GetButtonDown("Interact"))
+                    action.Invoke();
             }
         }
     }
