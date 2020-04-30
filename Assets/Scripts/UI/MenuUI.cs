@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class MenuUI : MonoBehaviour
 {
     private static GameObject currentView;
+    private static GameObject previousView;
 
     public static bool freshStart = true;
 
@@ -13,6 +14,10 @@ public class MenuUI : MonoBehaviour
     [Space]
     public GameObject newGameView;
     public GameObject continueView;
+
+    [Space]
+    public GameObject inputView;
+    private System.Action action;
 
     private AudioSource audioSource;
 
@@ -27,12 +32,15 @@ public class MenuUI : MonoBehaviour
         else
         {
             currentView = defaultView;
+            
         }
 
         currentView.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        SetSelected();
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -44,6 +52,11 @@ public class MenuUI : MonoBehaviour
         currentView = view;
         currentView.SetActive(true);
 
+        SetSelected();
+    }
+
+    private void SetSelected()
+    {
         var firstButton = currentView.transform.GetChild(0).gameObject;
         EventSystem.current.SetSelectedGameObject(firstButton);
     }
@@ -61,19 +74,39 @@ public class MenuUI : MonoBehaviour
     {
         audioSource.Play();
         Fade.instance.SetColor(Fade.ColorName.Default);
-        Fade.instance.FadeOut(() => GameState.NewGame());
+        action = () => GameState.NewGame();
+        
+        previousView = newGameView;
+        ChangeView(inputView);
     }
 
     public void Continue()
     {
         audioSource.Play();
         Fade.instance.SetColor(Fade.ColorName.Light);
-        Fade.instance.FadeOut(() => GameState.LoadSavedLevel());
+        action = () => GameState.LoadSavedLevel();
+        
+        previousView = continueView;
+        ChangeView(inputView);
+    }
+
+    public void Enter(bool isGamepadSelected)
+    {
+        audioSource.Play();
+        CaptionText.gamepadInputActive = isGamepadSelected;
+        Fade.instance.FadeOut(action);
+    }
+
+    public void Back()
+    {
+        audioSource.Play();
+        ChangeView(previousView);
     }
 
     public void Quit()
     {
         audioSource.Play();
+        Fade.instance.SetColor(Fade.ColorName.Default);
         Fade.instance.FadeOut(() => Application.Quit());
     }
 }

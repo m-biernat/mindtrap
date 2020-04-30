@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultInput:
   - NONE
-  - Press <b>E</b> / <b>A</b> to <b>pick up</b> object
-  - Press <b>E</b> / <b>A</b> to <b>place</b> object
-  - Press <b>R</b> / <b>B</b> to <b>drop</b> object
+  - Press <b>E</b> to <b>pick up</b> object
+  - Press <b>E</b> to <b>place</b> object
+  - Press <b>R</b> to <b>drop</b> object
   gamepadInput:
   - NONE
-  - Press <b>E</b> / <b>A</b> to <b>pick up</b> object
-  - Press <b>E</b> / <b>A</b> to <b>place</b> object
-  - Press <b>R</b> / <b>B</b> to <b>drop</b> object
+  - Press <b>A</b> to <b>pick up</b> object
+  - Press <b>A</b> to <b>place</b> object
+  - Press <b>B</b> to <b>drop</b> object
