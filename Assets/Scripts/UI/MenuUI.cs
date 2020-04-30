@@ -30,10 +30,7 @@ public class MenuUI : MonoBehaviour
             GameState.Load();
         }   
         else
-        {
             currentView = defaultView;
-            
-        }
 
         currentView.SetActive(true);
 
@@ -75,8 +72,12 @@ public class MenuUI : MonoBehaviour
         audioSource.Play();
         Fade.instance.SetColor(Fade.ColorName.Default);
         action = () => GameState.NewGame();
-        
-        previousView = newGameView;
+
+        if (GameState.noActiveSave)
+            previousView = newGameView;
+        else
+            previousView = continueView;
+
         ChangeView(inputView);
     }
 

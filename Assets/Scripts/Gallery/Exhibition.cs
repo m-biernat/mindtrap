@@ -10,7 +10,7 @@ public class Exhibition : MonoBehaviour
     public List<InteractableSocket> sockets;
 
     private List<InteractableObject> spawnedObjects;
-    private List<bool> correctPlacements;
+    private int placementsCount;
 
     public Camera easelCamera;
 
@@ -46,7 +46,7 @@ public class Exhibition : MonoBehaviour
             objects.RemoveAt(index);
         }
 
-        correctPlacements = new List<bool>();
+        placementsCount = 0;
         List<InteractableObject> selectedObjects = new List<InteractableObject>();
 
         for (int i = 0; i < sockets.Count; i++)
@@ -78,19 +78,11 @@ public class Exhibition : MonoBehaviour
 
     public void Proceed(bool value)
     {
-        correctPlacements.Add(value);
-
-        if (correctPlacements.Count == sockets.Count)
+        if (value)
         {
-            bool allCorrect = true;
+            placementsCount++;
 
-            foreach (var placement in correctPlacements)
-            {
-                if (placement == false)
-                    allCorrect = false;
-            }
-
-            if (allCorrect)
+            if (placementsCount == sockets.Count)
             {
                 door.teleportAction = ChangeExhibition;
                 door.gameObject.SetActive(true);
@@ -100,17 +92,20 @@ public class Exhibition : MonoBehaviour
                     spawnedObject.transform.tag = "Untagged";
                 }
             }
-            else
+        }
+        else
+        {
+            foreach (var socket in sockets)
             {
-                foreach (var socket in sockets)
+                if (socket.placedObject)
                 {
                     socket.GetComponent<Collider>().enabled = true;
                     socket.placedObject.GetComponent<InteractableObject>().Destroy(1.5f);
                     socket.placedObject = null;
                 }
-
-                correctPlacements.Clear();
             }
+
+            placementsCount = 0;
         }
     }
 
