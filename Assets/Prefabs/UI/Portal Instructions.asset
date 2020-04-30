@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Portal Instructions
   m_EditorClassIdentifier: 
   defaultInput:
-  - Find a way to the other room
+  - Find a way to the next room
   gamepadInput:
-  - Find a way to the other room
+  - Find a way to the next room

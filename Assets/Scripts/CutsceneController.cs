@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CutsceneController : MonoBehaviour
 {
@@ -92,7 +93,10 @@ public class CutsceneController : MonoBehaviour
 
         GameObject onComplete = playerUI.transform.Find("OnComplete").gameObject;
         onComplete.SetActive(true);
-        
+
+        var endButton = onComplete.transform.GetChild(1).gameObject;
+        EventSystem.current.SetSelectedGameObject(endButton);
+
         audioSource = onComplete.GetComponent<AudioSource>();
 
         Cursor.lockState = CursorLockMode.None;
