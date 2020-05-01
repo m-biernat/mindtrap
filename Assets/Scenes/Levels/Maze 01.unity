@@ -173,10 +173,10 @@ MonoBehaviour:
   endPointAnchor: {fileID: 1416104396}
   fillTileSpaces: 1
   width: 11
-  height: 11
+  height: 9
   initialX: 1
   initialY: -1
-  seed: 11
+  seed: 0
   positionOffset: 6
   activate: {fileID: 1948415947}
 --- !u!1 &653260035
@@ -264,6 +264,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1858835603}
     m_Modifications:
+    - target: {fileID: 2330780080140913696, guid: 1b08d75490608a740bfb9845c7d8fe53,
+        type: 3}
+      propertyPath: maxLuminance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5190477994693835612, guid: 1b08d75490608a740bfb9845c7d8fe53,
         type: 3}
       propertyPath: m_Name
@@ -343,11 +348,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 2330780080140913696, guid: 1b08d75490608a740bfb9845c7d8fe53,
-        type: 3}
-      propertyPath: maxLuminance
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b08d75490608a740bfb9845c7d8fe53, type: 3}

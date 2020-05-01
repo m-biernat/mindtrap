@@ -26,8 +26,8 @@ MonoBehaviour:
   - UNSET
   - "Use \u26BD\u26BDyour <b>right stick</b> to look around"
   - "Use \u26BD\u26BDyour <b>left stick</b> to move"
-  - Press <b>right bumper</b> while moving to jump
-  - Press <b>left</b> and <b>right bumper</b> to jump further
+  - Press <b>left bumper</b> while moving to jump
+  - Press <b>right</b> and <b>left bumper</b> to jump further
   - Come close facing the object to interact
   - Press <b>A</b> to activate
   - DESINTEGRATE
