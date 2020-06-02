@@ -28,6 +28,12 @@ public class MenuUI : MonoBehaviour
             currentView = startView;
             ClientSettings.Load();
             GameState.Load();
+
+            if (Screen.currentResolution.refreshRate > 60)
+            {
+                QualitySettings.vSyncCount = 0;
+                Application.targetFrameRate = 60;
+            }    
         }   
         else
             currentView = defaultView;
